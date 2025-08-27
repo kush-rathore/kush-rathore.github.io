@@ -1,99 +1,98 @@
+/* --- Basic Setup --- */
 body {
-  background: url('./images/background.jpg') no-repeat center center fixed;
-  background-size: cover;
-  color: #ccc;
-}
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #000;
-  color: #ccc;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-.hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: radial-gradient(circle at top, #000, #0a0a0a);
-  color: #00BFFF;
-  text-align: center;
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-.typewriter {
-  overflow: hidden;
-  border-right: .15em solid #00BFFF;
-  white-space: nowrap;
-  animation: typing 3s steps(30, end), blink .75s step-end infinite;
+/* --- Header --- */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 0;
+    text-align: center;
 }
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+
+header h1 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 2.5em;
 }
-@keyframes blink {
-  from, to { border-color: transparent }
-  50% { border-color: #00BFFF }
+
+header p {
+    margin: 0;
+    font-weight: 300;
+    font-size: 1.2em;
+}
+
+/* --- Sections --- */
+section {
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 h2 {
-  color: #1E90FF;
-  margin-top: 40px;
-  text-align: center;
+    color: #333;
+    border-bottom: 2px solid #5c67f2;
+    padding-bottom: 10px;
+    margin-top: 0;
 }
 
-section {
-  padding: 20px;
-  max-width: 800px;
-  margin: auto;
+/* --- Projects --- */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
 }
 
-.card {
-  background-color: #111;
-  border: 1px solid #00BFFF;
-  padding: 20px;
-  margin: 20px 0;
-  border-radius: 10px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 15px #00BFFF;
+.project-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
 }
 
-#screenshots {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-#screenshots img {
-  width: 100%;
-  border-radius: 8px;
-  transition: transform 0.3s ease;
-}
-#screenshots img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 10px #00BFFF;
+.project-card h3 {
+    margin-top: 0;
 }
 
-.social {
-  text-align: center;
-  margin-top: 20px;
+.project-card a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #5c67f2;
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 10px;
 }
-.social a {
-  font-size: 2em;
-  margin: 0 10px;
-  color: #00BFFF;
-  transition: color 0.3s ease;
+
+/* --- Contact & Footer --- */
+#contact ul {
+    list-style: none;
+    padding: 0;
 }
-.social a:hover {
-  color: #1E90FF;
+
+#contact li {
+    margin-bottom: 10px;
+}
+
+a {
+    color: #5c67f2;
 }
 
 footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #0a0a0a;
-  color: #666;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9em;
+    color: #666;
 }
-
