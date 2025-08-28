@@ -21,26 +21,12 @@
   html { 
     scroll-behavior: smooth; 
     background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-  }
-  body {
-    font-family: 'Inter', sans-serif;
-    @apply bg-omniBlack-950 text-gray-300;
-    background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-    min-height: 100vh;
+    overflow-x: hidden;
   }
   
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    @apply bg-omniBlack-900;
-  }
-  ::-webkit-scrollbar-thumb {
-    @apply bg-omniGreen-500 rounded-full;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-omniGreen-400;
+  body {
+    font-family: 'Inter', sans-serif;
+    @apply antialiased;
   }
 }
 
@@ -129,5 +115,24 @@
   }
   50% {
     transform: translateY(-15px);
+  }
+}
+
+@layer components {
+  .text-responsive {
+    @apply text-sm xs:text-base md:text-lg;
+    @apply break-words;
+    @apply max-w-full;
+  }
+
+  .container-responsive {
+    @apply w-full px-4 mx-auto;
+    @apply max-w-[90%] md:max-w-[85%] lg:max-w-[80%];
+  }
+
+  .card-responsive {
+    @apply p-4 md:p-6;
+    @apply overflow-hidden;
+    @apply break-words;
   }
 }
