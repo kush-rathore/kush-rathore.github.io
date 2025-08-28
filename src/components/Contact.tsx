@@ -102,14 +102,14 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="section-padding bg-secondary-50">
+    <section id="contact" className="section-padding bg-omniBlack-950">
       <div className="container-custom">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-secondary-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-omniGreen-400 mb-4">
             Get In Touch
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto rounded-full"></div>
-          <p className="text-xl text-secondary-600 mt-6 max-w-2xl mx-auto">
+          <div className="w-24 h-1 bg-gradient-to-r from-omniGreen-500 to-omniGreen-400 mx-auto rounded-full"></div>
+          <p className="text-xl text-gray-300 mt-6 max-w-2xl mx-auto">
             I'm always open to discussing new opportunities, interesting projects, 
             or just having a chat about technology and development.
           </p>
@@ -117,15 +117,15 @@ const Contact: React.FC = () => {
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <div className="card p-8">
-            <h3 className="text-2xl font-bold text-secondary-900 mb-6">
+          <div className="bg-omniBlack-800 p-8 rounded-lg border border-omniGreen-500/30">
+            <h3 className="text-2xl font-bold text-omniGreen-400 mb-6">
               Send me a message
             </h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-secondary-700 mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
                     Name *
                   </label>
                   <input
@@ -135,13 +135,13 @@ const Contact: React.FC = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 bg-omniBlack-700 border border-omniGreen-500/30 rounded-lg text-white focus:ring-2 focus:ring-omniGreen-500 focus:border-transparent transition-all duration-200"
                     placeholder="Your name"
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-secondary-700 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
                     Email *
                   </label>
                   <input
@@ -151,14 +151,14 @@ const Contact: React.FC = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 bg-omniBlack-700 border border-omniGreen-500/30 rounded-lg text-white focus:ring-2 focus:ring-omniGreen-500 focus:border-transparent transition-all duration-200"
                     placeholder="your@email.com"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-secondary-700 mb-2">
+                <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
                   Subject *
                 </label>
                 <input
@@ -168,13 +168,13 @@ const Contact: React.FC = () => {
                   value={formData.subject}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 bg-omniBlack-700 border border-omniGreen-500/30 rounded-lg text-white focus:ring-2 focus:ring-omniGreen-500 focus:border-transparent transition-all duration-200"
                   placeholder="What's this about?"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-secondary-700 mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
                   Message *
                 </label>
                 <textarea
@@ -184,7 +184,7 @@ const Contact: React.FC = () => {
                   onChange={handleInputChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 resize-none"
+                  className="w-full px-4 py-3 bg-omniBlack-700 border border-omniGreen-500/30 rounded-lg text-white focus:ring-2 focus:ring-omniGreen-500 focus:border-transparent transition-all duration-200 resize-none"
                   placeholder="Tell me more about your project or inquiry..."
                 ></textarea>
               </div>
@@ -192,11 +192,11 @@ const Contact: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-omniGreen-500 hover:bg-omniGreen-600 text-black font-bold py-3 px-6 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <span className="flex items-center justify-center">
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
@@ -212,10 +212,10 @@ const Contact: React.FC = () => {
           {/* Contact Information */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold text-secondary-900 mb-6">
+              <h3 className="text-2xl font-bold text-omniGreen-400 mb-6">
                 Let's connect
               </h3>
-              <p className="text-lg text-secondary-600 leading-relaxed mb-8">
+              <p className="text-lg text-gray-300 leading-relaxed mb-8">
                 I'm currently available for freelance work and full-time opportunities. 
                 Feel free to reach out if you'd like to discuss a project or just say hello!
               </p>
@@ -225,20 +225,20 @@ const Contact: React.FC = () => {
             <div className="space-y-6">
               {contactInfo.map((info, index) => (
                 <div key={index} className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center text-primary-600">
+                  <div className="w-12 h-12 bg-omniGreen-500/20 rounded-lg flex items-center justify-center text-omniGreen-400">
                     {info.icon}
                   </div>
                   <div>
-                    <h4 className="font-medium text-secondary-900">{info.title}</h4>
+                    <h4 className="font-medium text-omniGreen-400">{info.title}</h4>
                     {info.link ? (
                       <a 
                         href={info.link}
-                        className="text-primary-600 hover:text-primary-700 transition-colors duration-200"
+                        className="text-omniGreen-400 hover:text-omniGreen-300 transition-colors duration-200"
                       >
                         {info.value}
                       </a>
                     ) : (
-                      <p className="text-secondary-600">{info.value}</p>
+                      <p className="text-gray-300">{info.value}</p>
                     )}
                   </div>
                 </div>
@@ -247,7 +247,7 @@ const Contact: React.FC = () => {
 
             {/* Social links */}
             <div>
-              <h4 className="font-medium text-secondary-900 mb-4">Follow me on</h4>
+              <h4 className="font-medium text-omniGreen-400 mb-4">Follow me on</h4>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
                   <a
@@ -255,7 +255,7 @@ const Contact: React.FC = () => {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 bg-secondary-100 hover:bg-primary-100 rounded-lg flex items-center justify-center text-secondary-600 hover:text-primary-600 transition-all duration-200 transform hover:scale-110"
+                    className="w-12 h-12 bg-omniBlack-700 hover:bg-omniGreen-500/20 rounded-lg flex items-center justify-center text-gray-300 hover:text-omniGreen-400 transition-all duration-200 transform hover:scale-110"
                   >
                     {social.icon}
                   </a>
