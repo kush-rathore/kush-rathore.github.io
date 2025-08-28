@@ -1,138 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/*
+  Fix for long text (emails, long tokens, URLs) on small screens.
+  - Adds a small, non-invasive utility that forces long words to wrap
+    without changing overall site appearance.
+  - Targets elements with class `wrap-long`, `.email` and mailto links.
+  - Safe for desktop and mobile.
+*/
 @layer components {
-  .custom-bg {
-    @apply bg-omniGreen-500;
+  .wrap-long,
+  .email,
+  a[href^="mailto:"] {
+    overflow-wrap: anywhere;     /* allow breaking long words */
+    word-break: break-word;      /* fallback */
+    hyphens: auto;
+    max-width: 100%;             /* never exceed container width */
+    display: inline-block;       /* allow max-width to apply */
   }
 }
 
-@layer components {
-  .bg-custom {
-    @apply bg-omniBlack-950;
-  }
-}
-
+/* Minimal base styles — keep unobtrusive so appearance isn't changed */
 @layer base {
-  html { 
-    scroll-behavior: smooth; 
-    background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-    overflow-x: hidden;
-  }
-  
-  body {
-    font-family: 'Inter', sans-serif;
-    @apply antialiased;
-  }
-}
-
-@layer components {
-  /* Ben 10 Theme Components */
-  .btn-omnitrix {
-    @apply bg-omniGreen-500 hover:bg-omniGreen-600 text-omniBlack-950 font-orbitron font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105;
-    box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
-  }
-  
-  .btn-omnitrix:hover {
-    box-shadow: 0 0 30px rgba(0, 255, 65, 0.8);
-  }
-  
-  .btn-secondary {
-    @apply bg-omniBlack-800 hover:bg-omniBlack-700 text-omniGreen-400 font-orbitron font-medium py-2 px-6 rounded-lg transition-all duration-200 border border-omniGreen-500/30;
-  }
-  
-  .section-padding { 
-    @apply py-16 px-4 sm:px-6 lg:px-8; 
-  }
-  
-  .container-custom { 
-    @apply max-w-7xl mx-auto; 
-  }
-  
-  .card-hologram {
-    @apply bg-gradient-to-br from-omniBlack-900/80 to-omniBlack-800/60 rounded-xl p-8 backdrop-blur-sm;
-    border: 1px solid rgba(0, 255, 65, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 255, 65, 0.1);
-  }
-  
-  .card-hologram:hover {
-    border-color: rgba(0, 255, 65, 0.4);
-    box-shadow: 0 12px 40px rgba(0, 255, 65, 0.2);
-  }
-  
-  .panel-tech {
-    @apply bg-omniBlack-900/90 rounded-lg p-6 border border-omniGreen-500/20;
-    background-image: 
-      linear-gradient(rgba(0, 255, 65, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 255, 65, 0.05) 1px, transparent 1px);
-    background-size: 20px 20px;
-  }
-  
-  .text-glow {
-    text-shadow: 0 0 10px rgba(0, 255, 65, 0.8);
-  }
-  
-  .border-glow {
-    border-color: rgba(0, 255, 65, 0.5);
-    box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
-  }
-  
-  .hologram-effect {
-    background: linear-gradient(45deg, transparent 30%, rgba(0, 255, 65, 0.1) 50%, transparent 70%);
-    background-size: 200% 200%;
-    animation: hologram 3s ease-in-out infinite;
-  }
-}
-
-@layer utilities {
-  .animate-slide-in-left { 
-    animation: slideInLeft 0.5s ease-out forwards; 
-  }
-  
-  .animate-float-high { 
-    animation: floatHigh 3s ease-in-out infinite; 
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes floatHigh {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
-}
-
-@layer components {
-  .text-responsive {
-    @apply text-sm xs:text-base md:text-lg;
-    @apply break-words;
-    @apply max-w-full;
-  }
-
-  .container-responsive {
-    @apply w-full px-4 mx-auto;
-    @apply max-w-[90%] md:max-w-[85%] lg:max-w-[80%];
-  }
-
-  .card-responsive {
-    @apply p-4 md:p-6;
-    @apply overflow-hidden;
-    @apply break-words;
+  html, body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
