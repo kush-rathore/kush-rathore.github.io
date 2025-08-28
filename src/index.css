@@ -5,6 +5,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .custom-bg {
+    @apply bg-omniGreen-500;
+  }
+}
+
+@layer components {
+  .bg-custom {
+    @apply bg-omniBlack-950;
+  }
+}
+
 @layer base {
   html { 
     scroll-behavior: smooth; 
