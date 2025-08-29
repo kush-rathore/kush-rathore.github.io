@@ -60,7 +60,6 @@ export const siteConfig = {
     {
       title: "E-Commerce Platform",
       description: "A full-stack e-commerce platform built with React and Node.js",
-      image: "/images/projects/ecommerce.jpg",
       technologies: ["React", "Node.js", "MongoDB", "Stripe"],
       github: "https://github.com/kushrathore/ecommerce",
       live: "https://ecommerce-demo.com"
@@ -68,7 +67,6 @@ export const siteConfig = {
     {
       title: "Task Management App",
       description: "A collaborative task management application with real-time updates",
-      image: "/images/projects/taskapp.jpg",
       technologies: ["React", "Firebase", "Material-UI"],
       github: "https://github.com/kushrathore/taskapp",
       live: "https://taskapp-demo.com"
@@ -76,7 +74,6 @@ export const siteConfig = {
     {
       title: "Portfolio Website",
       description: "A modern portfolio website with sci-fi theme",
-      image: "/images/projects/portfolio.jpg",
       technologies: ["React", "TypeScript", "Tailwind CSS"],
       github: "https://github.com/kushrathore/portfolio",
       live: "https://kushrathore.com"
@@ -89,15 +86,13 @@ export const siteConfig = {
       title: "Full Stack Developer",
       company: "Tech Solutions Inc.",
       period: "2023 - Present",
-      description: "Developing and maintaining web applications using modern technologies",
-      image: "/images/experience/techsolutions.jpg"
+      description: "Developing and maintaining web applications using modern technologies"
     },
     {
       title: "Frontend Developer",
       company: "Digital Creations",
       period: "2022 - 2023",
-      description: "Creating responsive and interactive user interfaces",
-      image: "/images/experience/digitalcreations.jpg"
+      description: "Creating responsive and interactive user interfaces"
     }
   ],
 
@@ -107,8 +102,7 @@ export const siteConfig = {
       degree: "Bachelor of Computer Science",
       institution: "University of Technology",
       period: "2020 - 2024",
-      description: "Specialized in Software Engineering and Web Development",
-      image: "/images/education/university.jpg"
+      description: "Specialized in Software Engineering and Web Development"
     }
   ],
 
