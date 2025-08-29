@@ -68,7 +68,7 @@
   }
   
   .card-hologram {
-    @apply bg-gradient-to-br from-omniBlack-900/80 to-omniBlack-800/60 rounded-xl p-8 backdrop-blur-sm;
+    @apply bg-gradient-to-br from-omniBlack-900/80 to-omniBlack-800/60 rounded-xl p-6 sm:p-8 backdrop-blur-sm;
     border: 1px solid rgba(0, 255, 65, 0.2);
     box-shadow: 0 8px 32px rgba(0, 255, 65, 0.1);
   }
@@ -79,7 +79,7 @@
   }
   
   .panel-tech {
-    @apply bg-omniBlack-900/90 rounded-lg p-6 border border-omniGreen-500/20;
+    @apply bg-omniBlack-900/90 rounded-lg p-4 sm:p-6 border border-omniGreen-500/20;
     background-image: 
       linear-gradient(rgba(0, 255, 65, 0.05) 1px, transparent 1px),
       linear-gradient(90deg, rgba(0, 255, 65, 0.05) 1px, transparent 1px);
@@ -100,6 +100,36 @@
     background-size: 200% 200%;
     animation: hologram 3s ease-in-out infinite;
   }
+
+  /* Tech Grid Background */
+  .bg-tech-grid {
+    background-image: 
+      linear-gradient(rgba(0, 255, 65, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 65, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Cosmic Background */
+  .bg-cosmic {
+    background: radial-gradient(ellipse at center, rgba(0, 255, 65, 0.1) 0%, transparent 70%);
+  }
+
+  /* Mobile-friendly text utilities */
+  .text-wrap-safe {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+  }
+
+  .text-truncate-mobile {
+    @apply truncate;
+  }
+
+  @media (max-width: 640px) {
+    .text-truncate-mobile {
+      @apply break-words;
+    }
+  }
 }
 
 @layer utilities {
@@ -109,6 +139,18 @@
   
   .animate-float-high { 
     animation: floatHigh 3s ease-in-out infinite; 
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-scan {
+    animation: scan 2s linear infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
   }
 }
 
@@ -129,5 +171,41 @@
   }
   50% {
     transform: translateY(-15px);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes scan {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 255, 65, 0.8);
+  }
+}
+
+@keyframes hologram {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
 }

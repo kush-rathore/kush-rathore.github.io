@@ -17,12 +17,24 @@ export default {
           800: '#1A1A1A',
           900: '#121212',
           950: '#0A0A0A',
+        },
+        omniSilver: {
+          200: '#E5E7EB',
+          300: '#D1D5DB',
+          400: '#9CA3AF',
         }
       },
       fontFamily: {
         'orbitron': ['Orbitron', 'sans-serif'],
         'audiowide': ['Audiowide', 'cursive'],
         'inter': ['Inter', 'sans-serif'],
+      },
+      screens: {
+        'xs': '320px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
       },
     },
   },

@@ -39,8 +39,6 @@ const Navbar: React.FC = () => {
               <div className="absolute inset-3 rounded-full bg-omniGreen-500 animate-ping"></div>
             </div>
             <span className="text-xl md:text-2xl font-orbitron font-bold text-omniGreen-500 text-glow flex items-center">
-
-
               PORTFOLIO
             </span>
           </div>
@@ -82,13 +80,13 @@ const Navbar: React.FC = () => {
         <div className={`md:hidden transition-all duration-300 overflow-hidden ${
           isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}>
-          <div className="py-4 space-y-2 border-t border-omniGreen-500/20">
+          <div className="py-4 space-y-2 border-t border-omniGreen-500/20 bg-omniBlack-950/98 backdrop-blur-md rounded-b-lg shadow-2xl">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block py-3 px-4 text-omniSilver-300 hover:text-omniGreen-400 hover:bg-omniBlack-800/50 rounded-lg font-orbitron font-medium transition-all duration-200"
+                className="block py-3 px-4 text-omniSilver-300 hover:text-omniGreen-400 hover:bg-omniBlack-800/80 rounded-lg font-orbitron font-medium transition-all duration-200 border border-transparent hover:border-omniGreen-500/30"
               >
                 {item.name}
               </a>

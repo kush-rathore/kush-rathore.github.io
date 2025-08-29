@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { siteConfig } from '../config/siteConfig';
 
 const Hero: React.FC = () => {
   const [currentText, setCurrentText] = useState(0);
@@ -12,7 +11,7 @@ const Hero: React.FC = () => {
     return () => clearInterval(interval);
   }, [texts.length]);
 
-  const logoSrc = siteConfig.images.logo;
+  const logoSrc = '/images/logo.png';
 
   return (
     <section id="home" className="min-h-[80vh] md:min-h-screen bg-omniBlack-950 flex items-start pt-6 md:pt-10 relative overflow-hidden">
@@ -48,7 +47,7 @@ const Hero: React.FC = () => {
                   {/* Profile Image Inside Omnitrix */}
                   <img
                     src={logoSrc}
-                    alt={`${siteConfig.personal.name} - Omnitrix Profile`}
+                    alt="Kush Rathore - Omnitrix Profile"
                     className="w-32 h-32 rounded-full object-cover border-2 border-omniGreen-500 relative z-10"
                   />
                   
@@ -63,12 +62,12 @@ const Hero: React.FC = () => {
               {/* Alien Profile Data */}
               <div className="space-y-4">
                 <h1 className="text-3xl md:text-5xl font-audiowide font-bold text-omniGreen-400 mb-3 animate-slide-in-left text-center">
-                  <span className="text-omniGreen-500 text-glow">{siteConfig.personal.name.toUpperCase()}</span>
+                  <span className="text-omniGreen-500 text-glow">KUSH RATHORE</span>
                 </h1>
                 
                 <div className="panel-tech">
                   <p className="text-base md:text-lg text-omniSilver-300 font-orbitron leading-relaxed animate-slide-in-left text-center" style={{ animationDelay: '120ms' }}>
-                    "{siteConfig.personal.quote}"
+                    "Passionate about creating innovative digital experiences"
                   </p>
                 </div>
 
