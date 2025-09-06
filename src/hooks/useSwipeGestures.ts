@@ -30,7 +30,32 @@ export const useSwipeGestures = (options: SwipeGestureOptions) => {
 
     const handleTouchMove = (e: TouchEvent) => {
       if (!isTracking) return;
-      e.preventDefault(); // Prevent scrolling while swiping
+      
+      const touch = e.touches[0];
+      const deltaX = touch.clientX - startX;
+      const deltaY = touch.clientY - startY;
+      
+      const absX = Math.abs(deltaX);
+      const absY = Math.abs(deltaY);
+      
+      // Only prevent default if we're clearly doing a swipe gesture
+      // Allow normal scrolling if movement is primarily vertical and we're not in vertical swipe mode
+      if (direction === 'horizontal' && absX > absY && absX > 20) {
+        e.preventDefault();
+      } else if (direction === 'vertical' && absY > absX && absY > 20) {
+        e.preventDefault();
+      } else if (direction === 'both' && (absX > 20 || absY > 20)) {
+        // For 'both' mode, only prevent if there's clear intentional swipe movement
+        if (absX > absY && absX > 30) {
+          e.preventDefault(); // Horizontal swipe
+        } else if (absY > absX && absY > 30) {
+          // Only prevent vertical scroll if it's a clear swipe gesture
+          // Allow normal page scrolling for small movements
+          if (absY > 50) {
+            e.preventDefault();
+          }
+        }
+      }
     };
 
     const handleTouchEnd = (e: TouchEvent) => {
@@ -55,7 +80,9 @@ export const useSwipeGestures = (options: SwipeGestureOptions) => {
       }
       
       if (direction === 'vertical' || direction === 'both') {
-        if (absY > absX && absY > threshold) {
+        // For vertical swipes, use a higher threshold to avoid conflicts with page scrolling
+        const verticalThreshold = direction === 'both' ? threshold * 1.5 : threshold;
+        if (absY > absX && absY > verticalThreshold) {
           if (deltaY > 0 && onSwipeDown) {
             onSwipeDown();
           } else if (deltaY < 0 && onSwipeUp) {
