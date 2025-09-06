@@ -1,24 +1,9 @@
 import React from 'react';
+import { siteConfig } from '../config/siteConfig';
 
 const Skills: React.FC = () => {
-  const tools = [
-    'VS Code', 'Python', 'GitHub', 'C++' , 'DSA in C++', 'Cursor AI','Copilot'
-  ];
-
-  const softSkills = [
-    'Leadership', 'Team Collaboration', 'Learning Agility', 'Communication', 'Time Management', 'Creativity'
-  ];
-
-  const certifications = [
-    'Typing'];
-
-  const languages = [
-    { name: 'English', level: 'Native' },
-    { name: 'Hindi', level: 'Native' }
-  ];
-
   return (
-    <section id="skills" className="section-padding bg-omniBlack-950 relative overflow-hidden">
+    <section id="skills" className="section-padding bg-omniBlack-900 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-tech-grid opacity-5"></div>
       <div className="absolute bottom-20 left-20 w-32 h-32 bg-omniGreen-500/5 rounded-full blur-3xl animate-pulse"></div>
@@ -44,7 +29,7 @@ const Skills: React.FC = () => {
             </div>
             
             <div className="grid grid-cols-2 gap-3">
-              {tools.map((tool, index) => (
+              {siteConfig.tools.map((tool, index) => (
                 <div key={index} className="panel-tech text-center group-hover:border-omniGreen-500/40 transition-all duration-300">
                   <span className="text-omniSilver-200 font-orbitron text-sm">{tool}</span>
                 </div>
@@ -64,7 +49,7 @@ const Skills: React.FC = () => {
             </div>
             
             <div className="grid grid-cols-2 gap-3">
-              {softSkills.map((skill, index) => (
+              {siteConfig.softSkills.map((skill, index) => (
                 <div key={index} className="panel-tech text-center group-hover:border-omniGreen-500/40 transition-all duration-300">
                   <span className="text-omniSilver-200 font-orbitron text-sm">{skill}</span>
                 </div>
@@ -87,7 +72,7 @@ const Skills: React.FC = () => {
               <div>
                 <h4 className="text-omniGreen-400 font-orbitron font-bold mb-3">CERTIFICATIONS</h4>
                 <div className="space-y-2">
-                  {certifications.map((cert, index) => (
+                  {siteConfig.certifications.map((cert, index) => (
                     <div key={index} className="panel-tech text-center group-hover:border-omniGreen-500/40 transition-all duration-300">
                       <span className="text-omniSilver-200 font-orbitron text-sm">{cert}</span>
                     </div>
@@ -98,7 +83,7 @@ const Skills: React.FC = () => {
               <div>
                 <h4 className="text-omniGreen-400 font-orbitron font-bold mb-3">COMMUNICATION PROTOCOLS</h4>
                 <div className="space-y-2">
-                  {languages.map((lang, index) => (
+                  {siteConfig.languages.map((lang, index) => (
                     <div key={index} className="panel-tech group-hover:border-omniGreen-500/40 transition-all duration-300">
                       <div className="flex justify-between items-center">
                         <span className="text-omniSilver-200 font-orbitron text-sm">{lang.name}</span>

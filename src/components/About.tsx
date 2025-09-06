@@ -3,7 +3,7 @@ import { siteConfig } from '../config/siteConfig';
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="section-padding bg-omniBlack-950 relative overflow-hidden">
+    <section id="about" className="section-padding bg-omniBlack-900 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-cosmic opacity-30"></div>
       <div className="absolute inset-0 bg-tech-grid opacity-10"></div>
@@ -11,7 +11,7 @@ const About: React.FC = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-audiowide font-bold text-omniGreen-400 mb-4 text-glow">
-            PROFILE DATABASE
+            STUDENT PROFILE
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-omniGreen-500 to-omniGreen-300 mx-auto rounded-full"></div>
         </div>
@@ -55,9 +55,9 @@ const About: React.FC = () => {
                 INTEREST PROTOCOLS
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {siteConfig.interests.map((interest, index) => (
-                  <div key={index} className="bg-omniBlack-800/50 border border-omniGreen-500/30 rounded-lg p-3 text-center hover:border-omniGreen-500/60 transition-colors duration-300">
-                    <span className="text-omniSilver-200 font-orbitron text-xs sm:text-sm break-words leading-tight">{interest}</span>
+                {siteConfig.interests.map((interest: string, index: number) => (
+                  <div key={index} className="panel-tech text-center group-hover:border-omniGreen-500/40 transition-all duration-300">
+                    <span className="text-omniSilver-200 font-orbitron text-sm">{interest}</span>
                   </div>
                 ))}
               </div>

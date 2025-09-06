@@ -8,6 +8,8 @@ export default {
     extend: {
       colors: {
         omniGreen: {
+          200: '#66FF66',
+          300: '#4DFF4D',
           400: '#33FF33',
           500: '#00FF00',
           600: '#00CC00',
@@ -22,6 +24,8 @@ export default {
           200: '#E5E7EB',
           300: '#D1D5DB',
           400: '#9CA3AF',
+          500: '#6B7280',
+          600: '#4B5563',
         }
       },
       fontFamily: {

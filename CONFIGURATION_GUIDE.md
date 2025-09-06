@@ -1,44 +1,60 @@
-# 🚀 Portfolio Configuration Guide
+# Kush Rathore Portfolio - Clean & Optimized
 
-Welcome to your portfolio configuration system! This guide will help you easily update all your information without touching the code.
+## 🚀 Quick Start
 
-## 📁 File Structure
+```bash
+# Install dependencies
+npm install
 
-```
-portfolio/
-├── src/
-│   └── config/
-│       └── siteConfig.ts          # Main configuration file
-├── public/
-│   ├── images/
-│   │   ├── projects/              # Project images
-│   │   ├── experience/            # Work experience images
-│   │   ├── education/             # Education images
-│   │   ├── avatar/                # Profile pictures
-│   │   └── logo/                  # Logo files
-│   ├── favicon.svg                # Custom favicon
-│   └── index.html                 # HTML with meta tags
-└── CONFIGURATION_GUIDE.md         # This file
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
 ```
 
-## ⚙️ How to Update Your Information
+## 📁 Project Structure
 
-### 1. **Personal Information** 📝
-Edit `src/config/siteConfig.ts`:
-
-```typescript
-personal: {
-  name: "KUSH RATHORE",           // Your name (displayed in caps)
-  fullName: "Kush Rathore",       // Your full name
-  age: 21,                        // Your age
-  location: "India",              // Your location
-  email: "kush.rathore@example.com", // Your email
-  status: "ACTIVE",               // Your status
-  quote: "Your personal quote here", // Your tagline
-  bio: "Your bio description",    // Your bio
-  avatar: "/images/avatar/your-photo.jpg" // Your profile picture
-}
 ```
+src/
+├── components/          # React components
+│   ├── Hero.tsx        # Landing section
+│   ├── About.tsx       # About section
+│   ├── Skills.tsx      # Skills overview
+│   ├── EnhancedSkills.tsx # Detailed skills with progress
+│   ├── LearningProgress.tsx # Coding streak & goals
+│   ├── Achievements.tsx # Academic badges
+│   ├── Experience.tsx  # Learning journey timeline
+│   ├── Education.tsx   # Educational background
+│   ├── Projects.tsx    # Project showcase
+│   ├── Blog.tsx        # Learning blog posts
+│   ├── CompetitiveProgramming.tsx # CP stats
+│   ├── LearningResources.tsx # Tools & resources
+│   ├── Testimonials.tsx # Academic testimonials
+│   ├── Resume.tsx      # Resume section
+│   ├── Contact.tsx     # Contact form
+│   ├── Navbar.tsx      # Navigation
+│   └── Footer.tsx      # Footer
+├── config/
+│   └── siteConfig.ts   # Site configuration
+├── App.tsx             # Main app component
+├── main.tsx           # App entry point
+└── index.css          # Global styles
+```
+
+## ⚙️ Configuration
+
+All site content is managed through `src/config/siteConfig.ts`. Update this file to customize:
+
+- Personal information
+- Skills and technologies  
+- Projects and achievements
+- Contact details
+- Social media links
+- Theme colors
 
 ### 2. **Contact Information** 📞
 ```typescript

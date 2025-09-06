@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
+import EnhancedSkills from './components/EnhancedSkills';
 import Projects from './components/Projects';
-import Contact from './components/Contact.jsx';  // Try the .jsx file
+import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Navbar from './components/Navbar';
+import Experience from './components/Experience';
+import Education from './components/Education';
+import Testimonials from './components/Testimonials';
+import Resume from './components/Resume';
+import LearningProgress from './components/LearningProgress';
+import Achievements from './components/Achievements';
+import Blog from './components/Blog';
+import CompetitiveProgramming from './components/CompetitiveProgramming';
+import LearningResources from './components/LearningResources';
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -44,8 +54,18 @@ const App: React.FC = () => {
       <main>
         <Hero />
         <About />
+        <LearningProgress />
+        <Achievements />
         <Skills />
+        <EnhancedSkills />
+        <Experience />
+        <Education />
         <Projects />
+        <CompetitiveProgramming />
+        <Blog />
+        <LearningResources />
+        <Testimonials />
+        <Resume />
         <Contact />
       </main>
       <Footer />
@@ -54,5 +74,3 @@ const App: React.FC = () => {
 };
 
 export default App;
-
-

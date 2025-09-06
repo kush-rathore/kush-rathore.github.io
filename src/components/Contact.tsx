@@ -1,24 +1,44 @@
 import React, { useState } from 'react';
 import { siteConfig } from '../config/siteConfig';
 
-const Contact = () => {
-  const [formData, setFormData] = useState({
+interface FormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+interface ContactInfo {
+  icon: React.ReactNode;
+  title: string;
+  value: string;
+  link: string;
+}
+
+interface SocialLink {
+  name: string;
+  icon: React.ReactNode;
+  link: string;
+}
+
+const Contact: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     subject: '',
     message: ''
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     
@@ -30,7 +50,7 @@ const Contact = () => {
     }, 2000);
   };
 
-  const contactInfo = [
+  const contactInfo: ContactInfo[] = [
     {
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -44,12 +64,12 @@ const Contact = () => {
     {
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
         </svg>
       ),
-      title: 'Telegram',
-      value: siteConfig.contact.telegram,
-      link: siteConfig.social.telegram
+      title: 'Phone',
+      value: siteConfig.contact.phone,
+      link: `tel:${siteConfig.contact.phone}`
     },
     {
       icon: (
@@ -60,11 +80,11 @@ const Contact = () => {
       ),
       title: 'Location',
       value: siteConfig.contact.location,
-      link: '#'
+      link: 'https://maps.google.com/?q=India'
     }
   ];
 
-  const socialLinks = [
+  const socialLinks: SocialLink[] = [
     {
       name: 'Instagram',
       icon: (
@@ -104,7 +124,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="section-padding bg-omniBlack-950 relative overflow-hidden">
+    <section id="contact" className="section-padding bg-omniBlack-900 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-tech-grid opacity-5"></div>
       <div className="absolute top-20 left-20 w-32 h-32 bg-omniGreen-500/5 rounded-full blur-3xl animate-pulse"></div>
@@ -120,60 +140,58 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Contact Information */}
-          <div className="space-y-8">
-            <div className="card-hologram">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-omniGreen-500/20 rounded-full flex items-center justify-center mr-4">
-                  <svg className="w-6 h-6 text-omniGreen-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-orbitron font-bold text-omniGreen-400">TRANSMISSION CHANNELS</h3>
+          <div className="card-hologram">
+            <div className="flex items-center mb-6">
+              <div className="w-12 h-12 bg-omniGreen-500/20 rounded-full flex items-center justify-center mr-4">
+                <svg className="w-6 h-6 text-omniGreen-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
               </div>
-              
-              <div className="space-y-4">
-                {contactInfo.map((info, index) => (
-                  <a
-                    key={index}
-                    href={info.link}
-                    className="panel-tech group hover:border-omniGreen-500/40 transition-all duration-300 flex items-center space-x-4"
-                  >
-                    <div className="w-12 h-12 bg-omniGreen-500/20 rounded-full flex items-center justify-center text-omniGreen-400 group-hover:bg-omniGreen-500/30 transition-colors">
-                      {info.icon}
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <h4 className="text-omniGreen-400 font-orbitron font-bold text-sm">{info.title}</h4>
-                      <p className="text-omniSilver-200 font-orbitron text-sm break-words">{info.value}</p>
-                    </div>
-                  </a>
-                ))}
-              </div>
+              <h3 className="text-2xl font-orbitron font-bold text-omniGreen-400">CONTACT CHANNELS</h3>
+            </div>
+            
+            <div className="space-y-4 mb-8">
+              {contactInfo.map((info, index) => (
+                <a
+                  key={index}
+                  href={info.link}
+                  className="panel-tech group hover:border-omniGreen-500/40 transition-all duration-300 flex items-center space-x-4"
+                >
+                  <div className="w-12 h-12 bg-omniGreen-500/20 rounded-full flex items-center justify-center text-omniGreen-400 group-hover:bg-omniGreen-500/30 transition-colors">
+                    {info.icon}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h4 className="text-omniGreen-400 font-orbitron font-bold text-sm">{info.title}</h4>
+                    <p className="text-omniSilver-200 font-orbitron text-sm break-words">{info.value}</p>
+                  </div>
+                </a>
+              ))}
             </div>
 
             {/* Social Links */}
-            <div className="card-hologram">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-omniGreen-500/20 rounded-full flex items-center justify-center mr-4">
-                  <svg className="w-6 h-6 text-omniGreen-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="border-t border-omniGreen-500/20 pt-6">
+              <div className="flex items-center mb-4">
+                <div className="w-8 h-8 bg-omniGreen-500/20 rounded-full flex items-center justify-center mr-3">
+                  <svg className="w-4 h-4 text-omniGreen-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9" />
                   </svg>
                 </div>
-                <h3 className="text-xl md:text-2xl font-orbitron font-bold text-omniGreen-400">SOCIAL NETWORKS</h3>
+                <h4 className="text-lg font-orbitron font-bold text-omniGreen-400">SOCIAL NETWORKS</h4>
               </div>
               
-              <div className="grid grid-cols-2 sm:grid-cols-2 gap-3 sm:gap-4">
+              <div className="grid grid-cols-2 gap-3">
                 {socialLinks.map((social, index) => (
                   <a 
                     key={index}
                     href={social.link} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="panel-tech text-center group hover:border-omniGreen-500/40 transition-all duration-300"
+                    className="panel-tech text-center group hover:border-omniGreen-500/40 transition-all duration-300 py-3"
                   >
-                  <div className="w-12 h-12 bg-omniGreen-500/20 rounded-full flex items-center justify-center mx-auto mb-2 text-omniGreen-400 group-hover:bg-omniGreen-500/30 transition-colors">
+                    <div className="w-8 h-8 bg-omniGreen-500/20 rounded-full flex items-center justify-center mx-auto mb-2 text-omniGreen-400 group-hover:bg-omniGreen-500/30 transition-colors">
                       {social.icon}
-                  </div>
-                    <span className="text-omniSilver-200 font-orbitron text-xs sm:text-sm break-words">{social.name}</span>
+                    </div>
+                    <span className="text-omniSilver-200 font-orbitron text-xs break-words">{social.name}</span>
                   </a>
                 ))}
               </div>
@@ -181,7 +199,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="card-hologram">
+          <div className="card-hologram h-fit">
             <div className="flex items-center mb-6">
               <div className="w-12 h-12 bg-omniGreen-500/20 rounded-full flex items-center justify-center mr-4">
                 <svg className="w-6 h-6 text-omniGreen-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
