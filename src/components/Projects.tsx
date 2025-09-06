@@ -145,7 +145,10 @@ const Projects: React.FC = () => {
   const swipeRef = useSwipeGestures({
     onSwipeLeft: nextProject,
     onSwipeRight: prevProject,
-    threshold: 50
+    onSwipeUp: nextProject,
+    onSwipeDown: prevProject,
+    threshold: 50,
+    direction: 'both'
   });
   
   return (
@@ -190,7 +193,7 @@ const Projects: React.FC = () => {
               </button>
             </div>
             <p className="text-center text-omniSilver-400 font-orbitron text-xs mt-2">
-              Swipe left/right to navigate
+              Swipe left/right or up/down to navigate
             </p>
           </div>
           

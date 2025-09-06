@@ -17,7 +17,10 @@ const Testimonials: React.FC = () => {
   const swipeRef = useSwipeGestures({
     onSwipeLeft: nextTestimonial,
     onSwipeRight: prevTestimonial,
-    threshold: 50
+    onSwipeUp: nextTestimonial,
+    onSwipeDown: prevTestimonial,
+    threshold: 50,
+    direction: 'both'
   });
 
   const renderStars = (rating: number) => {
@@ -74,7 +77,7 @@ const Testimonials: React.FC = () => {
             </button>
           </div>
           <p className="text-center text-omniSilver-400 font-orbitron text-xs">
-            Swipe left/right to navigate testimonials
+            Swipe left/right or up/down to navigate testimonials
           </p>
         </div>
         

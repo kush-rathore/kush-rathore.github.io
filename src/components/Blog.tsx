@@ -17,7 +17,10 @@ const Blog: React.FC = () => {
   const swipeRef = useSwipeGestures({
     onSwipeLeft: nextPost,
     onSwipeRight: prevPost,
-    threshold: 50
+    onSwipeUp: nextPost,
+    onSwipeDown: prevPost,
+    threshold: 50,
+    direction: 'both'
   });
 
   return (
@@ -61,7 +64,7 @@ const Blog: React.FC = () => {
             </button>
           </div>
           <p className="text-center text-omniSilver-400 font-orbitron text-xs">
-            Swipe left/right to navigate posts
+            Swipe left/right or up/down to navigate posts
           </p>
         </div>
         
