@@ -16,9 +16,23 @@ import Achievements from './components/Achievements';
 import Blog from './components/Blog';
 import CompetitiveProgramming from './components/CompetitiveProgramming';
 import LearningResources from './components/LearningResources';
+import { usePullToRefresh } from './hooks/usePullToRefresh';
+import PullToRefreshIndicator from './components/PullToRefreshIndicator';
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
+  
+  const handleRefresh = async () => {
+    // Simulate refresh action
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    // You can add actual refresh logic here like refetching data
+    window.location.reload();
+  };
+  
+  const { elementRef, isRefreshing, pullDistance, shouldShowIndicator } = usePullToRefresh({
+    onRefresh: handleRefresh,
+    threshold: 80
+  });
 
   useEffect(() => {
     // Simulate loading time for smooth transition
@@ -48,7 +62,15 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="bg-omniBlack-950 min-h-screen">
+    <div ref={elementRef} className="bg-omniBlack-950 min-h-screen relative">
+      {/* Pull to Refresh Indicator */}
+      <PullToRefreshIndicator 
+        isVisible={shouldShowIndicator}
+        isRefreshing={isRefreshing}
+        pullDistance={pullDistance}
+        threshold={80}
+      />
+      
       <div className="fixed inset-0 bg-tech-grid opacity-20 pointer-events-none"></div>
       <Navbar />
       <main>

@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { siteConfig } from '../config/siteConfig';
+import { useSwipeGestures } from '../hooks/useSwipeGestures';
 
 const Blog: React.FC = () => {
   const { blogPosts } = siteConfig;
+  const [currentIndex, setCurrentIndex] = useState(0);
+  
+  const nextPost = () => {
+    setCurrentIndex((prev) => (prev + 1) % blogPosts.length);
+  };
+  
+  const prevPost = () => {
+    setCurrentIndex((prev) => (prev - 1 + blogPosts.length) % blogPosts.length);
+  };
+  
+  const swipeRef = useSwipeGestures({
+    onSwipeLeft: nextPost,
+    onSwipeRight: prevPost,
+    threshold: 50
+  });
 
   return (
     <section id="blog" className="section-padding bg-omniBlack-900 relative overflow-hidden">
@@ -23,32 +39,59 @@ const Blog: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => (
-            <article key={index} className="card-hologram group hover:border-omniGreen-500/40 transition-all duration-300 cursor-pointer">
+        {/* Mobile Swipe Navigation */}
+        <div className="md:hidden mb-6">
+          <div className="flex justify-center items-center space-x-4 mb-4">
+            <button 
+              onClick={prevPost}
+              className="w-12 h-12 rounded-full bg-omniGreen-500/20 border border-omniGreen-500/50 flex items-center justify-center text-omniGreen-400 hover:bg-omniGreen-500/30 transition-colors"
+              style={{ minHeight: '44px', minWidth: '44px' }}
+            >
+              ←
+            </button>
+            <span className="text-omniSilver-300 font-orbitron text-sm">
+              {currentIndex + 1} / {blogPosts.length}
+            </span>
+            <button 
+              onClick={nextPost}
+              className="w-12 h-12 rounded-full bg-omniGreen-500/20 border border-omniGreen-500/50 flex items-center justify-center text-omniGreen-400 hover:bg-omniGreen-500/30 transition-colors"
+              style={{ minHeight: '44px', minWidth: '44px' }}
+            >
+              →
+            </button>
+          </div>
+          <p className="text-center text-omniSilver-400 font-orbitron text-xs">
+            Swipe left/right to navigate posts
+          </p>
+        </div>
+        
+        <div ref={swipeRef}>
+          {/* Mobile: Single post view */}
+          <div className="md:hidden">
+            <article className="card-hologram group hover:border-omniGreen-500/40 transition-all duration-300 cursor-pointer">
               {/* Category Badge */}
               <div className="absolute -top-3 -right-3 px-3 py-1 bg-omniGreen-500/20 border border-omniGreen-500/40 rounded-full">
-                <span className="text-omniGreen-400 font-orbitron text-xs font-bold">{post.category}</span>
+                <span className="text-omniGreen-400 font-orbitron text-xs font-bold">{blogPosts[currentIndex].category}</span>
               </div>
 
               <div className="mb-4">
                 <h3 className="text-lg font-audiowide font-bold text-omniGreen-400 mb-3 group-hover:text-omniGreen-300 transition-colors">
-                  {post.title}
+                  {blogPosts[currentIndex].title}
                 </h3>
                 
                 <p className="text-omniSilver-300 font-orbitron text-sm leading-relaxed mb-4">
-                  {post.excerpt}
+                  {blogPosts[currentIndex].excerpt}
                 </p>
 
                 {/* Meta Information */}
                 <div className="flex items-center justify-between text-xs text-omniSilver-400 font-orbitron mb-4">
-                  <span>{post.date}</span>
-                  <span>{post.readTime}</span>
+                  <span>{blogPosts[currentIndex].date}</span>
+                  <span>{blogPosts[currentIndex].readTime}</span>
                 </div>
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2">
-                  {post.tags.map((tag, tagIndex) => (
+                  {blogPosts[currentIndex].tags.map((tag, tagIndex) => (
                     <span key={tagIndex} className="px-2 py-1 bg-omniBlack-800 border border-omniGreen-500/20 rounded text-omniGreen-400 font-orbitron text-xs">
                       {tag}
                     </span>
@@ -58,12 +101,59 @@ const Blog: React.FC = () => {
 
               {/* Read More Button */}
               <div className="mt-auto">
-                <button className="w-full py-2 bg-omniGreen-500/10 border border-omniGreen-500/30 rounded-lg text-omniGreen-400 font-orbitron text-sm font-medium hover:bg-omniGreen-500/20 hover:border-omniGreen-500/50 transition-all duration-300">
+                <button 
+                  className="w-full py-3 bg-omniGreen-500/10 border border-omniGreen-500/30 rounded-lg text-omniGreen-400 font-orbitron text-sm font-medium hover:bg-omniGreen-500/20 hover:border-omniGreen-500/50 transition-all duration-300"
+                  style={{ minHeight: '44px' }}
+                >
                   Read More
                 </button>
               </div>
             </article>
-          ))}
+          </div>
+          
+          {/* Desktop: Grid view */}
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {blogPosts.map((post, index) => (
+              <article key={index} className="card-hologram group hover:border-omniGreen-500/40 transition-all duration-300 cursor-pointer">
+                {/* Category Badge */}
+                <div className="absolute -top-3 -right-3 px-3 py-1 bg-omniGreen-500/20 border border-omniGreen-500/40 rounded-full">
+                  <span className="text-omniGreen-400 font-orbitron text-xs font-bold">{post.category}</span>
+                </div>
+
+                <div className="mb-4">
+                  <h3 className="text-lg font-audiowide font-bold text-omniGreen-400 mb-3 group-hover:text-omniGreen-300 transition-colors">
+                    {post.title}
+                  </h3>
+                  
+                  <p className="text-omniSilver-300 font-orbitron text-sm leading-relaxed mb-4">
+                    {post.excerpt}
+                  </p>
+
+                  {/* Meta Information */}
+                  <div className="flex items-center justify-between text-xs text-omniSilver-400 font-orbitron mb-4">
+                    <span>{post.date}</span>
+                    <span>{post.readTime}</span>
+                  </div>
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2">
+                    {post.tags.map((tag, tagIndex) => (
+                      <span key={tagIndex} className="px-2 py-1 bg-omniBlack-800 border border-omniGreen-500/20 rounded text-omniGreen-400 font-orbitron text-xs">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Read More Button */}
+                <div className="mt-auto">
+                  <button className="w-full py-2 bg-omniGreen-500/10 border border-omniGreen-500/30 rounded-lg text-omniGreen-400 font-orbitron text-sm font-medium hover:bg-omniGreen-500/20 hover:border-omniGreen-500/50 transition-all duration-300">
+                    Read More
+                  </button>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
 
         {/* View All Posts Button */}

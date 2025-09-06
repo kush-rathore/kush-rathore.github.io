@@ -36,6 +36,8 @@
   .btn-omnitrix {
     @apply bg-omniGreen-500 hover:bg-omniGreen-600 text-omniBlack-950 font-orbitron font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105;
     box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+    min-height: 44px;
+    min-width: 44px;
   }
   
   .btn-omnitrix:hover {
@@ -44,6 +46,8 @@
   
   .btn-secondary {
     @apply px-6 py-3 bg-omniGreen-500/10 border border-omniGreen-500/30 text-omniGreen-300 font-orbitron font-medium rounded-lg transition-all duration-300 hover:bg-omniGreen-500/20 hover:border-omniGreen-500/50 hover:text-omniGreen-200 hover:shadow-lg hover:shadow-omniGreen-500/20;
+    min-height: 44px;
+    min-width: 44px;
   }
   
   .section-padding { 
@@ -103,6 +107,29 @@
   }
 
 }
+
+  /* Mobile Touch Optimization */
+  .btn-mobile {
+    min-height: 44px;
+    min-width: 44px;
+    @apply py-3 px-4 rounded-lg font-orbitron font-medium transition-all duration-300;
+  }
+  
+  .btn-mobile-large {
+    min-height: 56px;
+    min-width: 56px;
+    @apply py-4 px-6 rounded-lg font-orbitron font-medium transition-all duration-300;
+  }
+  
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .touch-target-large {
+    min-height: 56px;
+    min-width: 56px;
+  }
 
 @layer utilities {
   .animate-slide-in-left { 

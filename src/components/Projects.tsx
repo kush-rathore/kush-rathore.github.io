@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Project, siteConfig } from '../config/siteConfig';
+import { useSwipeGestures } from '../hooks/useSwipeGestures';
 
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   return (
@@ -131,6 +132,21 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
 
 const Projects: React.FC = () => {
   const { projects } = siteConfig;
+  const [currentIndex, setCurrentIndex] = useState(0);
+  
+  const nextProject = () => {
+    setCurrentIndex((prev) => (prev + 1) % projects.length);
+  };
+  
+  const prevProject = () => {
+    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
+  };
+  
+  const swipeRef = useSwipeGestures({
+    onSwipeLeft: nextProject,
+    onSwipeRight: prevProject,
+    threshold: 50
+  });
   
   return (
     <section id="projects" className="section-padding bg-omniBlack-900 relative overflow-hidden">
@@ -151,16 +167,58 @@ const Projects: React.FC = () => {
           <h3 className="text-2xl font-audiowide font-bold text-omniGreen-400 mb-8 text-center">
             FEATURED PROJECTS
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {projects && projects.length > 0 ? (
-              projects.map((project: Project, index: number) => (
-                <ProjectCard key={index} project={project} />
-              ))
-            ) : (
-              <div className="col-span-full text-center py-12">
-                <p className="text-omniSilver-400 font-orbitron">No projects available at the moment.</p>
-              </div>
-            )}
+          
+          {/* Mobile Swipe Navigation */}
+          <div className="md:hidden mb-4">
+            <div className="flex justify-center items-center space-x-4">
+              <button 
+                onClick={prevProject}
+                className="w-10 h-10 rounded-full bg-omniGreen-500/20 border border-omniGreen-500/50 flex items-center justify-center text-omniGreen-400 hover:bg-omniGreen-500/30 transition-colors"
+                style={{ minHeight: '44px', minWidth: '44px' }}
+              >
+                ←
+              </button>
+              <span className="text-omniSilver-300 font-orbitron text-sm">
+                {currentIndex + 1} / {projects.length}
+              </span>
+              <button 
+                onClick={nextProject}
+                className="w-10 h-10 rounded-full bg-omniGreen-500/20 border border-omniGreen-500/50 flex items-center justify-center text-omniGreen-400 hover:bg-omniGreen-500/30 transition-colors"
+                style={{ minHeight: '44px', minWidth: '44px' }}
+              >
+                →
+              </button>
+            </div>
+            <p className="text-center text-omniSilver-400 font-orbitron text-xs mt-2">
+              Swipe left/right to navigate
+            </p>
+          </div>
+          
+          {/* Projects Display */}
+          <div ref={swipeRef} className="relative">
+            {/* Mobile: Single project view */}
+            <div className="md:hidden">
+              {projects && projects.length > 0 ? (
+                <ProjectCard project={projects[currentIndex]} />
+              ) : (
+                <div className="text-center py-12">
+                  <p className="text-omniSilver-400 font-orbitron">No projects available at the moment.</p>
+                </div>
+              )}
+            </div>
+            
+            {/* Desktop: Grid view */}
+            <div className="hidden md:grid grid-cols-1 md:grid-cols-2 gap-8">
+              {projects && projects.length > 0 ? (
+                projects.map((project: Project, index: number) => (
+                  <ProjectCard key={index} project={project} />
+                ))
+              ) : (
+                <div className="col-span-full text-center py-12">
+                  <p className="text-omniSilver-400 font-orbitron">No projects available at the moment.</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
